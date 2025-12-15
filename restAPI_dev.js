@@ -3,9 +3,12 @@ var express = require('express');
 var app = express();
 var port = 4000;
 
-var api_routes = require('./api_routes_dev.js');
+var api_handler = require('./api.js');
 
-app.use('/api', api_routes);
+// Simple API route using the same serverless function
+app.use('/api', (req, res) => {
+    api_handler(req, res);
+});
 
 // Serve the main app at root and /demo
 app.use(express.static('.'));
