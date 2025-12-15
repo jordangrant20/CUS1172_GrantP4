@@ -1,8 +1,13 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "restAPI_dev.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "front_end/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -16,6 +21,10 @@
     },
     {
       "src": "/demo/?",
+      "dest": "/front_end/index.html"
+    },
+    {
+      "src": "/",
       "dest": "/front_end/index.html"
     }
   ]

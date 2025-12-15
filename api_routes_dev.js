@@ -1,9 +1,10 @@
 
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 const fs = require('fs');
-let rawdata = fs.readFileSync('package.json');
+let rawdata = fs.readFileSync(path.join(__dirname, 'package.json'));
 let employee = JSON.parse(rawdata);
 
 // Defining a route for the root URL
