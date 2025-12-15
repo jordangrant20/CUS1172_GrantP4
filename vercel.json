@@ -4,36 +4,12 @@
     {
       "src": "api/index.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "front_end/**/*",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/api/index.js"
-    },
-    {
-      "src": "/front_end/(.*)",
-      "dest": "/front_end/$1"
-    },
-    {
-      "src": "/demo/(.*)",
-      "dest": "/front_end/$1"
-    },
-    {
-      "src": "/demo/?",
-      "dest": "/front_end/index.html"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
     }
   ]
 }
