@@ -8,7 +8,7 @@ Complete all information in the `Student Information` and the `Academic Integrit
 - **X-Number:** [X035175515]  
 - **Course Code:** [CUS 1172]  
 - **Assignment ID:** [Project 4 ]  
-- **Assignment Description:** [Brief description of the assignmentm, as provided]
+- **Assignment Description:** [In the video lesson “Sample Application: Building a RESTful API End-to-End,” I showcased how to apply the concepts introduced in earlier modules on both back-end and front-end development to build an end-to-end Restful API application.]
 - **Instructor**: Dr. Christoforos Christoforou
 
 ---
