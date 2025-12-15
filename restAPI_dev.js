@@ -12,15 +12,8 @@ app.use('/api', (req, res) => {
 
 // Serve static files from current directory
 app.use(express.static('.'));
-
-// Serve main app on both root and /demo routes
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/demo', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
+app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+app.get('/demo', (req, res) => res.sendFile(__dirname + '/index.html'));
 
 // Starting the server
 

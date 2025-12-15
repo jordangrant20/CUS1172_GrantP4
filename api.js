@@ -13,7 +13,7 @@ var employees = [
 ];
 
 // Main API function
-module.exports = (req, res) => {
+function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     
     if (req.method == 'GET') {
@@ -55,3 +55,7 @@ module.exports = (req, res) => {
         res.status(405).json({error: 'Method not allowed'});
     }
 }
+
+// Export for both CommonJS (local) and ES modules (Vercel)
+module.exports = handler;
+module.exports.default = handler;
