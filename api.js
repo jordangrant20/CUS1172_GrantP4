@@ -13,7 +13,7 @@ var employees = [
 ];
 
 // Main API function
-module.exports = function(req, res) {
+module.exports = (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     
     if (req.method == 'GET') {
