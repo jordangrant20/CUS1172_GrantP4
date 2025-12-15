@@ -7,7 +7,10 @@ var api_routes = require('./api_routes_dev.js');
 
 app.use('/api', api_routes);
 
-app.use('/demo', express.static('front_end'));
+// Serve the main app at root and /demo
+app.use(express.static('.'));
+app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+app.get('/demo', (req, res) => res.sendFile(__dirname + '/index.html'));
 
 // Starting the server
 

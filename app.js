@@ -102,12 +102,17 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Employee Search App loaded!");
     
     // Allow Enter key for name search
-    document.querySelector('#nameQuery').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            document.querySelector('#queryByName').click();
-        }
-    });
-    
-    // Show all employees on page load
-    showAll();
+    try {
+        document.querySelector('#nameQuery').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('#queryByName').click();
+            }
+        });
+        
+        // Show all employees on page load
+        console.log("Attempting to load all employees...");
+        showAll();
+    } catch (error) {
+        console.error("Error during initialization:", error);
+    }
 });
