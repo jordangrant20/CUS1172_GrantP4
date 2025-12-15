@@ -1,10 +1,21 @@
 // JavaScript for Employee Search App
 // CUS1172 - Project 4
 
+// Function to get the correct API base URL
+var getApiBaseUrl = function() {
+    // If we're on localhost, use the local API
+    if (window.location.hostname === 'localhost') {
+        return '';
+    }
+    // For Vercel deployment, use absolute path
+    return '';
+};
+
 // Function to update the view based on search
 var updateView = async function(button) {
     console.log("Button clicked:", button.dataset.querytype);
     
+    var apiBase = getApiBaseUrl();
     var api = '';
     
     // Check which type of search we're doing
@@ -14,7 +25,7 @@ var updateView = async function(button) {
             alert('Please enter a name to search for!');
             return;
         }
-        api = `/api/by_name/${queryvalue}`;
+        api = `${apiBase}/api/by_name/${queryvalue}`;
         
     } else if (button.dataset.querytype == 'by_age_range') {
         var queryStartAge = document.querySelector('#startAgeQuery').value;
@@ -26,16 +37,21 @@ var updateView = async function(button) {
             return;
         }
         
-        api = `/api/by_age/${queryStartAge}/${queryEndAge}`;
+        api = `${apiBase}/api/by_age/${queryStartAge}/${queryEndAge}`;
     }
     
     console.log("API URL:", api);
     
     try {
         // Make the API call
-        const data = await fetch(api);
-        const model = await data.json();
+        const response = await fetch(api);
+        console.log("Response status:", response.status);
         
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const model = await response.json();
         console.log("API Response:", model);
         
         // Show the results
@@ -43,19 +59,28 @@ var updateView = async function(button) {
         
     } catch (error) {
         console.error('Error:', error);
-        document.querySelector('#results').innerHTML = '<div class="alert alert-danger">Error loading data!</div>';
+        document.querySelector('#results').innerHTML = `<div class="alert alert-danger">Error loading data: ${error.message}. Check browser console for details.</div>`;
     }
 };
 
 // Function to show all employees
 var showAll = async function() {
     try {
-        const data = await fetch('/api');
-        const model = await data.json();
+        var apiBase = getApiBaseUrl();
+        console.log("Loading all employees from:", `${apiBase}/api`);
+        const response = await fetch(`${apiBase}/api`);
+        console.log("Response status:", response.status);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const model = await response.json();
+        console.log("API Response:", model);
         render_view(model);
     } catch (error) {
-        console.error('Error:', error);
-        document.querySelector('#results').innerHTML = '<div class="alert alert-danger">Error loading data!</div>';
+        console.error('Error loading all employees:', error);
+        document.querySelector('#results').innerHTML = `<div class="alert alert-danger">Error loading data: ${error.message}. Check browser console for details.</div>`;
     }
 };
 
