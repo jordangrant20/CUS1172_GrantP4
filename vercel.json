@@ -1,0 +1,22 @@
+{
+  "builds": [
+    {
+      "src": "restAPI_dev.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/restAPI_dev.js"
+    },
+    {
+      "src": "/demo/(.*)",
+      "dest": "/front_end/$1"
+    },
+    {
+      "src": "/demo/?",
+      "dest": "/front_end/index.html"
+    }
+  ]
+}

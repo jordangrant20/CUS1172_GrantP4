@@ -1,0 +1,73 @@
+{
+  "name": "employee-search-app", 
+  "version": "1.0.0",
+  "description": "Simple employee search application for CUS1172",
+  "main": "restAPI_dev.js",
+  "scripts": {
+    "start": "node restAPI_dev.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "data": [{
+    "id": "1111",
+    "EmployeeName": "Hemani Singh",
+    "EmployeeAge": "23",
+    "EmployeeSalary": "90,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1112",
+    "EmployeeName": "Jordan Grant",
+    "EmployeeAge": "23",
+    "EmployeeSalary": "80,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1113",
+    "EmployeeName": "Bathsheba Wilson",
+    "EmployeeAge": "25",
+    "EmployeeSalary": "70,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1114",
+    "EmployeeName": "Charles Barkley",
+    "EmployeeAge": "26",
+    "EmployeeSalary": "60,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1115",
+    "EmployeeName": "LeBron James",
+    "EmployeeAge": "40",
+    "EmployeeSalary": "120,000",
+    "ProfileImage": "" 
+  }, {
+    "id": "1116",
+    "EmployeeName": "Stephen Curry",
+    "EmployeeAge": "36",
+    "EmployeeSalary": "110,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1117",
+    "EmployeeName": "Ryad Ramirez",
+    "EmployeeAge": "34",
+    "EmployeeSalary": "115,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1118",
+    "EmployeeName": "Alex Morgan",
+    "EmployeeAge": "28",
+    "EmployeeSalary": "95,000",
+    "ProfileImage": ""
+  }, {
+    "id": "1119",
+    "EmployeeName": "Zuby Ejiofor",
+    "EmployeeAge": "22",
+    "EmployeeSalary": "100,000",
+    "ProfileImage": ""
+  }
+
+
+
+]
+}
+
+ 
