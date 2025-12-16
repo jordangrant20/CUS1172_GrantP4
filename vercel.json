@@ -5,6 +5,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/test",
+      "destination": "/test.html"
+    },
+    {
       "source": "/demo",
       "destination": "/index.html"
     },
