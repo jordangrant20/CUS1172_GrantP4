@@ -65,9 +65,9 @@
 
 ✅ **Deployment successful!**
 
-- **Live URL**: [Your Vercel deployment URL will go here]
-- **Frontend**: [URL]/demo
-- **API**: [URL]/api
+- **Live URL**: https://cus1172grantp4f.vercel.app/
+- **Frontend**: https://cus1172grantp4f.vercel.app/demo
+- **API**: https://cus1172grantp4f.vercel.app/api
 
 ## What I Learned
 
@@ -84,4 +84,6 @@ I tested my deployed application by:
 - Testing API endpoints directly
 - Checking on mobile devices
 
-Everything works the same as it did locally!
+## Problem
+
+- During testing I had trouble with blank pages but that problem should be resolved.
