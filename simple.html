@@ -53,9 +53,13 @@
                 return;
             }
             
-            fetch('/api/by_name/' + name)
+            const url = '/api/by_name/' + name;
+            console.log('calling name search:', url);
+            
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
+                    console.log('name search got back:', data.employees.length, 'results');
                     showResults(data.employees);
                 })
                 .catch(error => {
@@ -67,9 +71,13 @@
             const start = document.getElementById('startAge').value;
             const end = document.getElementById('endAge').value;
             
-            fetch('/api/by_age/' + start + '/' + end)
+            const url = '/api/by_age/' + start + '/' + end;
+            console.log('calling age search:', url);
+            
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
+                    console.log('age search got back:', data.employees.length, 'results');
                     showResults(data.employees);
                 })
                 .catch(error => {
