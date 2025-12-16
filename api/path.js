@@ -28,46 +28,34 @@ module.exports = function handler(req, res) {
   if (req.method === 'GET') {
     const { query } = req;
     
-    // basic debugging - student would add this
-    console.log('API called with query:', query);
+    // simple debugging
+    console.log('API called with query params:', query);
     
-    // Handle different API routes
-    if (query.path) {
-      const pathArray = Array.isArray(query.path) ? query.path : [query.path];
-      console.log('Path array:', pathArray);
-      
-      // GET /api - return all employees  
-      if (pathArray.length === 0) {
-        return res.json({ employees: employee.data });
-      }
-      
-      // GET /api/by_name/:name
-      if (pathArray[0] === 'by_name' && pathArray[1]) {
-        const searchName = pathArray[1];
-        console.log('Searching for name:', searchName);
-        const filtered = employee.data.filter(emp => 
-          emp.employee_name.toLowerCase().includes(searchName.toLowerCase())
-        );
-        console.log('Found', filtered.length, 'matches');
-        return res.json({ employees: filtered });
-      }
-      
-      // GET /api/by_age/:start/:end
-      if (pathArray[0] === 'by_age' && pathArray[1] && pathArray[2]) {
-        const startAge = parseInt(pathArray[1]);
-        const endAge = parseInt(pathArray[2]);
-        console.log('Searching age range:', startAge, 'to', endAge);
-        const filtered = employee.data.filter(emp => {
-          const age = parseInt(emp.employee_age);
-          return age >= startAge && age <= endAge;
-        });
-        console.log('Found', filtered.length, 'matches in age range');
-        return res.json({ employees: filtered });
-      }
-    } else {
-      // Root /api endpoint
-      return res.json({ employees: employee.data });
+    // check if this is a search request
+    if (query.type === 'name' && query.search) {
+      console.log('Name search for:', query.search);
+      const filtered = employee.data.filter(emp => 
+        emp.employee_name.toLowerCase().includes(query.search.toLowerCase())
+      );
+      console.log('Found', filtered.length, 'name matches');
+      return res.json({ employees: filtered });
     }
+    
+    if (query.type === 'age' && query.start_age && query.end_age) {
+      const startAge = parseInt(query.start_age);
+      const endAge = parseInt(query.end_age);
+      console.log('Age search from', startAge, 'to', endAge);
+      const filtered = employee.data.filter(emp => {
+        const age = parseInt(emp.employee_age);
+        return age >= startAge && age <= endAge;
+      });
+      console.log('Found', filtered.length, 'age matches');
+      return res.json({ employees: filtered });
+    }
+    
+    // default - return all employees
+    console.log('Returning all employees');
+    return res.json({ employees: employee.data });
   }
   
   res.status(404).json({ error: 'Not found' });

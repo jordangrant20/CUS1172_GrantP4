@@ -53,7 +53,7 @@
                 return;
             }
             
-            const url = '/api/by_name/' + name;
+            const url = '/api?search=' + name + '&type=name';
             console.log('calling name search:', url);
             
             fetch(url)
@@ -71,7 +71,7 @@
             const start = document.getElementById('startAge').value;
             const end = document.getElementById('endAge').value;
             
-            const url = '/api/by_age/' + start + '/' + end;
+            const url = '/api?start_age=' + start + '&end_age=' + end + '&type=age';
             console.log('calling age search:', url);
             
             fetch(url)
