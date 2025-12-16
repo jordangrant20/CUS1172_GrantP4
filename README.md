@@ -7,7 +7,7 @@ Complete all information in the `Student Information` and the `Academic Integrit
 - **Name:** [Jordan Grant]  
 - **X-Number:** [X035175515]  
 - **Course Code:** [CUS 1172]  
-- **Assignment ID:** [Project 4 ]  
+- **Assignment ID:** [Project 4]  
 - **Assignment Description:** [In the video lesson “Sample Application: Building a RESTful API End-to-End,” I showcased how to apply the concepts introduced in earlier modules on both back-end and front-end development to build an end-to-end Restful API application.]
 - **Instructor**: Dr. Christoforos Christoforou
 
@@ -47,7 +47,7 @@ By submitting this assignment, I confirm the following:
    ```
 
 4. **Open your browser**
-   - Go to: `http://localhost:4000/demo`
+   - Go to: `http://localhost:4000/`
    - The API is available at: `http://localhost:4000/api`
 
 ### What I Added
@@ -72,5 +72,3 @@ By submitting this assignment, I confirm the following:
 - `front_end/js/app.js` - JavaScript functionality
 - `vercel.json` - Deployment configuration
 - `package.json` - Added npm configuration (kept employee data)
-
-The professor's base code in `restAPI_dev.js` and `api_routes_dev.js` was not modified.# Deployment trigger Mon Dec 15 01:48:54 EST 2025
