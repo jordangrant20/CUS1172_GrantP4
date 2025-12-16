@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Search - CUS1172 Project 4</title>
+    <!-- bootstrap from class examples -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Employee Management System</h1>
+        <p>CUS1172 - Project 4</p>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Search Options</h3>
+                <input type="text" id="nameInput" placeholder="Enter name" class="form-control mb-2">
+                <button onclick="searchByName()" class="btn btn-primary mb-3">Search by Name</button>
+                
+                <div class="mb-3">
+                    <input type="number" id="startAge" placeholder="Start age" class="form-control mb-1" value="20">
+                    <input type="number" id="endAge" placeholder="End age" class="form-control mb-1" value="30">
+                    <button onclick="searchByAge()" class="btn btn-success">Search by Age</button>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <h3>Results</h3>
+                <div id="results">
+                    <p>Loading employees...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // basic functions for searching
+        function loadAllEmployees() {
+            fetch('/api')
+                .then(response => response.json())
+                .then(data => {
+                    showResults(data.employees);
+                })
+                .catch(error => {
+                    document.getElementById('results').innerHTML = '<p>Error loading data</p>';
+                    console.log(error);
+                });
+        }
+        
+        function searchByName() {
+            const name = document.getElementById('nameInput').value;
+            if (!name) {
+                alert('Please enter a name');
+                return;
+            }
+            
+            fetch('/api/by_name/' + name)
+                .then(response => response.json())
+                .then(data => {
+                    showResults(data.employees);
+                })
+                .catch(error => {
+                    document.getElementById('results').innerHTML = '<p>Search failed</p>';
+                });
+        }
+        
+        function searchByAge() {
+            const start = document.getElementById('startAge').value;
+            const end = document.getElementById('endAge').value;
+            
+            fetch('/api/by_age/' + start + '/' + end)
+                .then(response => response.json())
+                .then(data => {
+                    showResults(data.employees);
+                })
+                .catch(error => {
+                    document.getElementById('results').innerHTML = '<p>Search failed</p>';
+                });
+        }
+        
+        function showResults(employees) {
+            let html = '<ul class="list-group">';
+            employees.forEach(emp => {
+                html += '<li class="list-group-item">';
+                html += 'ID: ' + emp.id + ' | ';
+                html += emp.employee_name + ' | ';
+                html += 'Age: ' + emp.employee_age + ' | ';
+                html += 'Salary: $' + emp.employee_salary;
+                html += '</li>';
+            });
+            html += '</ul>';
+            document.getElementById('results').innerHTML = html;
+        }
+        
+        // load data when page loads
+        window.onload = function() {
+            loadAllEmployees();
+        };
+    </script>
+</body>
+</html>
