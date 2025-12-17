@@ -38,7 +38,7 @@
             fetch('/api')
                 .then(response => response.json())
                 .then(data => {
-                    showResults(data.employees);
+                    showResults(data.employee);
                 })
                 .catch(error => {
                     document.getElementById('results').innerHTML = '<p>Error loading data</p>';
@@ -53,14 +53,14 @@
                 return;
             }
             
-            const url = '/api?search=' + name + '&type=name';
+            const url = '/api/by_name/' + name;
             console.log('calling name search:', url);
             
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log('name search got back:', data.employees.length, 'results');
-                    showResults(data.employees);
+                    console.log('name search got back:', data.employee.length, 'results');
+                    showResults(data.employee);
                 })
                 .catch(error => {
                     document.getElementById('results').innerHTML = '<p>Search failed</p>';
@@ -71,14 +71,14 @@
             const start = document.getElementById('startAge').value;
             const end = document.getElementById('endAge').value;
             
-            const url = '/api?start_age=' + start + '&end_age=' + end + '&type=age';
+            const url = '/api/by_age/' + start + '/' + end;
             console.log('calling age search:', url);
             
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log('age search got back:', data.employees.length, 'results');
-                    showResults(data.employees);
+                    console.log('age search got back:', data.employee.length, 'results');
+                    showResults(data.employee);
                 })
                 .catch(error => {
                     document.getElementById('results').innerHTML = '<p>Search failed</p>';
@@ -90,9 +90,9 @@
             employees.forEach(emp => {
                 html += '<li class="list-group-item">';
                 html += 'ID: ' + emp.id + ' | ';
-                html += emp.employee_name + ' | ';
-                html += 'Age: ' + emp.employee_age + ' | ';
-                html += 'Salary: $' + emp.employee_salary;
+                html += emp.EmployeeName + ' | ';
+                html += 'Age: ' + emp.EmployeeAge + ' | ';
+                html += 'Salary: $' + emp.EmployeeSalary;
                 html += '</li>';
             });
             html += '</ul>';

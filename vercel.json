@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/simple.html"
+      "destination": "/index.html"
     },
     {
       "source": "/test",
@@ -22,11 +22,11 @@
     },
     {
       "source": "/api",
-      "destination": "/api/path"
+      "destination": "/api/index"
     },
     {
       "source": "/api/(.*)",
-      "destination": "/api/path"
+      "destination": "/api/index"
     }
   ]
 }
