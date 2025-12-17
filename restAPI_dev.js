@@ -41,10 +41,7 @@ app.get('/api/by_age/:start_age/:end_age', (req, res) => {
     res.json(outputJSON);
 });
 
-// Serve static files from current directory
-app.use(express.static('.'));
-
-// Serve main routes
+// Serve main routes first (before static files)
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index_dev.html');
 });
@@ -56,6 +53,9 @@ app.get('/demo', (req, res) => {
 app.get('/demo/', (req, res) => {
     res.sendFile(__dirname + '/index_dev.html');
 });
+
+// Serve static files from current directory
+app.use(express.static('.'));
 
 // Start the server.
 
