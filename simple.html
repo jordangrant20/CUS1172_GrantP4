@@ -38,7 +38,7 @@
             fetch('/api')
                 .then(response => response.json())
                 .then(data => {
-                    showResults(data.employee);
+                    showResults(data.employees);
                 })
                 .catch(error => {
                     document.getElementById('results').innerHTML = '<p>Error loading data</p>';
@@ -59,8 +59,8 @@
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log('name search got back:', data.employee.length, 'results');
-                    showResults(data.employee);
+                    console.log('name search got back:', data.employees.length, 'results');
+                    showResults(data.employees);
                 })
                 .catch(error => {
                     document.getElementById('results').innerHTML = '<p>Search failed</p>';
@@ -77,8 +77,8 @@
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log('age search got back:', data.employee.length, 'results');
-                    showResults(data.employee);
+                    console.log('age search got back:', data.employees.length, 'results');
+                    showResults(data.employees);
                 })
                 .catch(error => {
                     document.getElementById('results').innerHTML = '<p>Search failed</p>';
@@ -90,9 +90,9 @@
             employees.forEach(emp => {
                 html += '<li class="list-group-item">';
                 html += 'ID: ' + emp.id + ' | ';
-                html += emp.EmployeeName + ' | ';
-                html += 'Age: ' + emp.EmployeeAge + ' | ';
-                html += 'Salary: $' + emp.EmployeeSalary;
+                html += emp.employee_name + ' | ';
+                html += 'Age: ' + emp.employee_age + ' | ';
+                html += 'Salary: $' + emp.employee_salary;
                 html += '</li>';
             });
             html += '</ul>';
