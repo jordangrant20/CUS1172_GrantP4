@@ -22,11 +22,11 @@
     },
     {
       "source": "/api",
-      "destination": "/api/index"
+      "destination": "/api_main"
     },
     {
       "source": "/api/(.*)",
-      "destination": "/api/index"
+      "destination": "/api_main"
     }
   ]
 }
